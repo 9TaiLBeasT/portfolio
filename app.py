@@ -1,25 +1,58 @@
 import streamlit as st
 import base64
 
+@st.cache_data
+def get_img_as_base64(file):
+    with open(file, "rb") as f:
+        data = f.read()
+    return base64.b64encode(data).decode()
 
 def home():
     
     # Page configs (tab title, favicon)
     st.set_page_config(
         page_title="G Taraka Shiva Ganesh Portfolio",
-        page_icon="🏎️",
+        page_icon="☠️",
+        layout="wide",
+        initial_sidebar_state="expanded"
     )
+    
+    st.sidebar.header("Configuration")
+    
+    img = get_img_as_base64(r".\assets\background1.jpg")
+    
+    background = f"""
+    <style>
+    [data-testid="stAppViewContainer"] > .main{{
+        background-image: url("https://mir-s3-cdn-cf.behance.net/project_modules/1400/b1489a55645295.5b463687dbf0a.jpg");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+    }}
+    
+    [data-testid="stSidebar"] > div:first-child {{
+    background-image: url("https://cdnb.artstation.com/p/assets/images/images/054/594/479/4k/hue-teo-the-goat.jpg?1664901036");
+     background-size: cover;
+    background-position: center; 
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    }}
+    
+    </style>
+    """
+    st.markdown(background, unsafe_allow_html=True)
 
     # CSS styles file
-    with open("styles/main.css") as f:
+    with open(r"styles/main.css") as f:
         st.write(f"<style>{f.read()}</style>", unsafe_allow_html=True)
 
     # Profile image file
-    with open("assets/gun.png", "rb") as img_file:
+    with open(r"assets/gun.png", "rb") as img_file:
         img = "data:image/png;base64," + base64.b64encode(img_file.read()).decode()
 
     # PDF CV file
-    with open("assets/Ganesh_Resume.docx", "rb") as pdf_file:
+    with open(r"assets/Ganesh_Resume.docx", "rb") as pdf_file:
         pdf_bytes = pdf_file.read()
 
     
@@ -42,13 +75,6 @@ def home():
     """, 
     unsafe_allow_html=True)
 
-    # Alternative image (static and rounded) uncomment it if you prefer this one
-    # st.write(f"""
-    # <div style="display: flex; justify-content: center;">
-    #    <img src="{img}" alt="Enric Domingo" width="300" height="300" style="border-radius: 50%; object-fit: cover; margin-top: 40px; margin-bottom: 40px;">
-    # </div>
-    # """, unsafe_allow_html=True)
-
     # Subtitle
     st.write(f"""<div class="subtitle" style="text-align: center;">Machine Learning and Software Engineer</div>""", unsafe_allow_html=True)
 
@@ -57,7 +83,7 @@ def home():
         # Platform: [URL, Icon]
         "Kaggle": ["https://www.kaggle.com/auu23egcse045", "https://www.kaggle.com/static/images/site-logo.svg"],
         "LinkedIn": ["https://www.linkedin.com/in/gtsganesh/", "https://cdn-icons-png.flaticon.com/512/174/174857.png"],
-        "GitHub": ["", "https://icon-library.com/images/github-icon-white/github-icon-white-6.jpg"],
+        "GitHub": ["https://github.com/9TaiLBeasT", "https://icon-library.com/images/github-icon-white/github-icon-white-6.jpg"],
         "Twitter": ["", "https://cdn-icons-png.flaticon.com/512/733/733579.png"],
     }
 
@@ -97,9 +123,5 @@ def home():
     
     st.write(f"""<div class="subtitle" style="text-align: center;">⬅️ Check out my Projects in the navigation menu! (Coming soon...)</div>""", unsafe_allow_html=True)
 
-
-
-
 if __name__ == "__main__":
-
     home()
