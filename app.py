@@ -55,8 +55,8 @@ def home():
     # Social Icons
     social_icons_data = {
         # Platform: [URL, Icon]
-        "Kaggle": ["", "https://www.kaggle.com/static/images/site-logo.svg"],
-        "LinkedIn": ["", "https://cdn-icons-png.flaticon.com/512/174/174857.png"],
+        "Kaggle": ["https://www.kaggle.com/auu23egcse045", "https://www.kaggle.com/static/images/site-logo.svg"],
+        "LinkedIn": ["https://www.linkedin.com/in/gtsganesh/", "https://cdn-icons-png.flaticon.com/512/174/174857.png"],
         "GitHub": ["", "https://icon-library.com/images/github-icon-white/github-icon-white-6.jpg"],
         "Twitter": ["", "https://cdn-icons-png.flaticon.com/512/733/733579.png"],
     }
