@@ -8,7 +8,7 @@
   text-align: center;
   font-size: 2.5em;
   font-weight: bold;
-  color: #d6fde3;
+  color: #ffffff;
   margin-bottom: 5px;
 }
 
@@ -31,7 +31,6 @@ ul {
 }
 
 
-/* Animated home profile image styles */
 .container {
   height: 400px;
   display: flex;
@@ -109,7 +108,7 @@ ul {
 }
 
 
-/* Hide Streamlit default elements */
+/* Hide Streamlit default elements 
 #MainMenu {visibility: hidden;}
 header {visibility: hidden;}
-/* footer {visibility: hidden;} */
+ footer {visibility: hidden;} */

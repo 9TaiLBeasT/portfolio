@@ -1,11 +1,22 @@
 import streamlit as st
 import base64
 
-@st.cache_data
-def get_img_as_base64(file):
-    with open(file, "rb") as f:
-        data = f.read()
-    return base64.b64encode(data).decode()
+def img_decode(path):
+    with open(path, "rb") as img_file:
+        return "data:image/png;base64," + base64.b64encode(img_file.read()).decode()
+    
+def social_media_icons(data):
+    social_icons_html = [
+        f"<a href='{data[platform][0]}' target='_blank' style='margin-right: 10px;'>"
+        f"<i class='{data[platform][1]}' style='color: {data[platform][2]};'></i>"
+        f"</a>" for platform in data
+    ]
+    st.write(f"""
+    <div style="display: flex; justify-content: center; margin-bottom: 20px;">
+        {''.join(social_icons_html)}
+    </div>""", unsafe_allow_html=True)
+
+    
 
 def home():
     
@@ -19,7 +30,6 @@ def home():
     
     st.sidebar.header("Configuration")
     
-    img = get_img_as_base64(r".\assets\background1.jpg")
     
     background = f"""
     <style>
@@ -31,9 +41,10 @@ def home():
         background-attachment: fixed;
     }}
     
+    
     [data-testid="stSidebar"] > div:first-child {{
     background-image: url("https://cdnb.artstation.com/p/assets/images/images/054/594/479/4k/hue-teo-the-goat.jpg?1664901036");
-     background-size: cover;
+    background-size: cover;
     background-position: center; 
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -47,9 +58,6 @@ def home():
     with open(r"styles/main.css") as f:
         st.write(f"<style>{f.read()}</style>", unsafe_allow_html=True)
 
-    # Profile image file
-    with open(r"assets/gun.png", "rb") as img_file:
-        img = "data:image/png;base64," + base64.b64encode(img_file.read()).decode()
 
     # PDF CV file
     with open(r"assets/Ganesh_Resume.docx", "rb") as pdf_file:
@@ -66,7 +74,7 @@ def home():
             <div class="spin-container">
                 <div class="shape">
                     <div class="bd">
-                        <img src="{img}" alt="Ganesh">
+                        <img src="{img_decode(r"assets/gun.png")}" alt="Ganesh">
                     </div>
                 </div>
             </div>
@@ -78,22 +86,18 @@ def home():
     # Subtitle
     st.write(f"""<div class="subtitle" style="text-align: center;">Machine Learning and Software Engineer</div>""", unsafe_allow_html=True)
 
+    st.markdown("""<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">""", unsafe_allow_html=True)
+
     # Social Icons
     social_icons_data = {
-        # Platform: [URL, Icon]
-        "Kaggle": ["https://www.kaggle.com/auu23egcse045", "https://www.kaggle.com/static/images/site-logo.svg"],
-        "LinkedIn": ["https://www.linkedin.com/in/gtsganesh/", "https://cdn-icons-png.flaticon.com/512/174/174857.png"],
-        "GitHub": ["https://github.com/9TaiLBeasT", "https://icon-library.com/images/github-icon-white/github-icon-white-6.jpg"],
-        "Twitter": ["", "https://cdn-icons-png.flaticon.com/512/733/733579.png"],
-    }
+    "Kaggle": ["https://www.kaggle.com/auu23egcse045", "fa-brands fa-kaggle fa-bounce fa-xl", "#20beff"],
+    "LinkedIn": ["https://www.linkedin.com/in/gtsganesh/", "fa-brands fa-linkedin fa-beat-fade fa-xl", "#108bea"],
+    "GitHub": ["https://github.com/9TaiLBeasT", "fa-brands fa-github fa-beat fa-xl", "#000000"],
+    "X": ["https://x.com/GGanesh192349?t=wCMPvfh1d8_aHT4IuTxP_g&s=09", "fa-brands fa-square-x-twitter fa-bounce fa-xl", "#000000"], 
+}
 
-    social_icons_html = [f"<a href='{social_icons_data[platform][0]}' target='_blank' style='margin-right: 10px;'><img class='social-icon' src='{social_icons_data[platform][1]}' alt='{platform}'></a>" for platform in social_icons_data]
-
-    st.write(f"""
-    <div style="display: flex; justify-content: center; margin-bottom: 20px;">
-        {''.join(social_icons_html)}
-    </div>""", 
-    unsafe_allow_html=True)
+    
+    social_media_icons(social_icons_data)
 
     st.write("##")
 
