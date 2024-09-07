@@ -93,6 +93,28 @@ def background():
         background-color: #FF4500; 
         box-shadow: 0 0 10px rgba(255, 69, 0, 0.8); 
     }}
+    
+    [data-testid="stTab"] {{
+        background-color: orangered; 
+        color: white;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.4s ease, box-shadow 0.4s ease;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    }}
+
+    [data-testid="stTab"]:hover {{
+        background-color: #001f3f; /* Black-blue background on hover */
+        box-shadow: 0 8px 16px rgba(0, 31, 63, 0.7), 0 0 30px rgba(255, 69, 0, 0.8);
+    }}
+
+    [data-testid="stTab"]:active {{
+    background-color: #001f3f; 
+    box-shadow: 0 4px 8px rgba(0, 31, 63, 0.5);
+    }}
+
+
     </style>
     """
     st.markdown(background, unsafe_allow_html=True)                    
@@ -130,7 +152,7 @@ def skills():
                     transition: width 0.5s;
                 }
                 .stTabs {
-                    padding: 20px;
+                    padding: 25px;
                 }
                 </style>
                 """, unsafe_allow_html=True
