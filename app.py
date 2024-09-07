@@ -1,5 +1,6 @@
 import streamlit as st
 import base64
+import time
 
 def background():
     background = f"""
@@ -27,7 +28,6 @@ def background():
         background-repeat: no-repeat;
         background-attachment: fixed;
         transition: transform 0.5s ease, background-position 0.5s ease, box-shadow 0.5s ease;
-        /* Initial glow effect */
         box-shadow: 
             0 0 10px rgba(0, 191, 255, 0.6),    
             0 0 20px rgba(70, 130, 180, 0.4),   
@@ -35,16 +35,15 @@ def background():
             0 0 40px rgba(25, 25, 112, 0.2);
     }}
 
-    /* Hover effect: zoom, slight movement, and pulse animation */
     [data-testid="stHorizontalBlock"]:hover {{
-        transform: scale(1.05); /* Gently scales the entire block */
-        background-position: 50% 50%; /* Move background slightly */
+        transform: scale(1.05);
+        background-position: 50% 50%;
         box-shadow: 
             0 0 20px rgba(0, 191, 255, 0.8),    
             0 0 40px rgba(70, 130, 180, 0.6),   
             0 0 60px rgba(0, 255, 255, 0.5),   
             0 0 80px rgba(25, 25, 112, 0.4);
-        animation: pulse 2s infinite; /* Pulse animation on hover */
+        animation: pulse 2s infinite;
     }}
     
     @keyframes pulse {{
@@ -94,11 +93,85 @@ def background():
         background-color: #FF4500; 
         box-shadow: 0 0 10px rgba(255, 69, 0, 0.8); 
     }}
-
     </style>
     """
     st.markdown(background, unsafe_allow_html=True)                    
-            
+
+def skills():
+    with st.container():
+        col1 = st.columns(1)
+        with col1[0]:
+            st.write("")
+            st.markdown('<h2 class="textpad" style="color:white;">Skills</h2>', unsafe_allow_html=True)
+            st.markdown('<h8 class="textpad" style="color:lightcyan;">My technical & miscellaneous skills</h8>', unsafe_allow_html=True)
+
+            st.markdown(
+                """
+                <style>
+                .container {
+                    padding-left: 20px;
+                }
+                .progress {
+                    width: 400px;
+                    background-color: #f3f3f3;
+                    border-radius: 5px;
+                    overflow: hidden;
+                    height: 18px;
+                    margin-bottom: 10px;
+                    padding: 2px;
+                }
+                .progress-bar {
+                    height: 100%;
+                    background-color: #4caf50;
+                    text-align: center;
+                    line-height: 15px;
+                    color: white;
+                    width: 0%;
+                    transition: width 0.5s;
+                }
+                .stTabs {
+                    padding: 20px;
+                }
+                </style>
+                """, unsafe_allow_html=True
+            )
+
+            tab1, tab2, tab3 = st.tabs([":material/Memory: AI & Data Science ", ":material/Code: Programming", ":material/Neurology: Miscellaneous"])
+
+            with tab1:
+                skill_list = [("Machine Learning", 85), ("Deep Learning", 75), ("Data Analysis", 90)]
+                for skill, percent in skill_list:
+                    st.markdown(f"**{skill}**", unsafe_allow_html=True)
+                    st.markdown(f"""
+                    <div class="progress">
+                        <div class="progress-bar" style="width: {percent}%;">{percent}%</div>
+                    </div>
+                    """, unsafe_allow_html=True)
+
+            with tab2:
+                skill_list = [("Python", 95), ("JavaScript", 80), ("SQL", 70)]
+                for skill, percent in skill_list:
+                    st.markdown(f"**{skill}**", unsafe_allow_html=True)
+                    st.markdown(f"""
+                    <div class="progress">
+                        <div class="progress-bar" style="width: {percent}%;">{percent}%</div>
+                    </div>
+                    """, unsafe_allow_html=True)
+
+            with tab3:
+                skill_list = [("Communication", 90), ("Teamwork", 85), ("Problem-Solving", 80)]
+                for skill, percent in skill_list:
+                    st.markdown(f"**{skill}**", unsafe_allow_html=True)
+                    st.markdown(f"""
+                    <div class="progress">
+                        <div class="progress-bar" style="width: {percent}%;">{percent}%</div>
+                    </div>
+                    """, unsafe_allow_html=True)
+    
+            st.write("")
+            st.write("")
+        
+        
 def img_decode(path):
     with open(path, "rb") as img_file:
         return "data:image/png;base64," + base64.b64encode(img_file.read()).decode()
@@ -218,6 +291,7 @@ def home():
             
     st.write("##")
     
-
+    skills()
+    
 if __name__ == "__main__":
     home()
