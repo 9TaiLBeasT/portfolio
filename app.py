@@ -2,6 +2,13 @@ import streamlit as st
 import base64
 import time
 
+import base64
+
+def img_decode(path):
+    with open(path, "rb") as img_file:
+        return base64.b64encode(img_file.read()).decode('utf-8')
+
+
 def background():
     background = f"""
     <style>
@@ -161,7 +168,7 @@ def skills():
             tab1, tab2, tab3 = st.tabs([":material/Memory: AI & Data Science ", ":material/Code: Programming", ":material/Neurology: Miscellaneous"])
 
             with tab1:
-                skill_list = [("Machine Learning", 85), ("Deep Learning", 75), ("Data Analysis", 90)]
+                skill_list = [("Machine Learning", 85), ("Deep Learning", 75), ("Data Analysis", 50)]
                 for skill, percent in skill_list:
                     st.markdown(f"**{skill}**", unsafe_allow_html=True)
                     st.markdown(f"""
@@ -171,7 +178,7 @@ def skills():
                     """, unsafe_allow_html=True)
 
             with tab2:
-                skill_list = [("Python", 95), ("JavaScript", 80), ("SQL", 70)]
+                skill_list = [("Python", 95), ("Java", 60), ("SQL", 50), ("C", 50)]
                 for skill, percent in skill_list:
                     st.markdown(f"**{skill}**", unsafe_allow_html=True)
                     st.markdown(f"""
@@ -192,11 +199,36 @@ def skills():
     
             st.write("")
             st.write("")
-        
-        
-def img_decode(path):
-    with open(path, "rb") as img_file:
-        return "data:image/png;base64," + base64.b64encode(img_file.read()).decode()
+
+def projects():
+    st.markdown('<link rel="stylesheet" href="styles.css">', unsafe_allow_html=True)
+    with st.container():
+        st.write("")
+        col1, col2, col3 = st.columns(3)
+        with col1:
+            st.markdown('<h2 class="textpad" style="color:white;">Projects</h2>', unsafe_allow_html=True)
+            
+            st.markdown(
+                f"""
+                <div class="flip-container">
+                    <div class="flip-card">
+                        <div class="flip-card-front">
+                            <img src="data:image/png;base64,{img_decode(r"./assets/background1.jpg")}" width="250" height="300">
+                        </div>
+                        <div class="flip-card-back">
+                            <h8>Project Details: <a href="https://example.com" target="_blank" style="color: #1e90ff; text-decoration: underline;">click here</a></h8> 
+                        </div>
+                    </div>
+                </div>
+                """,
+                unsafe_allow_html=True
+            )
+            
+            st.markdown('<h9 class="textpad" style="color:lightcyan;">Coming Soon.....</h9>', unsafe_allow_html=True)
+
+        st.write("")
+
+
     
 def social_media_icons(data):
     social_icons_html = [
@@ -314,6 +346,10 @@ def home():
     st.write("##")
     
     skills()
+    
+    st.write("##")
+    
+    projects()
     
 if __name__ == "__main__":
     home()
