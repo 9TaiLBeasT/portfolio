@@ -4,7 +4,7 @@ import base64
 def background():
     background = f"""
     <style>
-    [data-testid="stAppViewContainer"] > .main{{
+    [data-testid="stAppViewContainer"] > .main {{
         background-image: url("https://mir-s3-cdn-cf.behance.net/project_modules/1400/b1489a55645295.5b463687dbf0a.jpg");
         background-size: cover;
         background-position: center;
@@ -12,31 +12,93 @@ def background():
         background-attachment: fixed;
     }}
     
-    
     [data-testid="stSidebar"] > div:first-child {{
-    background-image: url("https://cdnb.artstation.com/p/assets/images/images/054/594/479/4k/hue-teo-the-goat.jpg?1664901036");
-    background-size: cover;
-    background-position: center; 
-    background-repeat: no-repeat;
-    background-attachment: fixed;
+        background-image: url("https://cdnb.artstation.com/p/assets/images/images/054/594/479/4k/hue-teo-the-goat.jpg?1664901036");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
     }}
     
     [data-testid="stHorizontalBlock"] {{
-    background-image: url("https://devsnap.nyc3.digitaloceanspaces.com/devsnap.me/codepen-VjrZWv.png");
-    background-size: cover;
-    background-position: center; 
-    background-repeat: no-repeat;
-    background-attachment: fixed;
+         background-image: url("https://devsnap.nyc3.digitaloceanspaces.com/devsnap.me/codepen-VjrZWv.png");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        transition: transform 0.5s ease, background-position 0.5s ease, box-shadow 0.5s ease;
+        /* Initial glow effect */
+        box-shadow: 
+            0 0 10px rgba(0, 191, 255, 0.6),    
+            0 0 20px rgba(70, 130, 180, 0.4),   
+            0 0 30px rgba(0, 255, 255, 0.3),   
+            0 0 40px rgba(25, 25, 112, 0.2);
+    }}
+
+    /* Hover effect: zoom, slight movement, and pulse animation */
+    [data-testid="stHorizontalBlock"]:hover {{
+        transform: scale(1.05); /* Gently scales the entire block */
+        background-position: 50% 50%; /* Move background slightly */
+        box-shadow: 
+            0 0 20px rgba(0, 191, 255, 0.8),    
+            0 0 40px rgba(70, 130, 180, 0.6),   
+            0 0 60px rgba(0, 255, 255, 0.5),   
+            0 0 80px rgba(25, 25, 112, 0.4);
+        animation: pulse 2s infinite; /* Pulse animation on hover */
     }}
     
+    @keyframes pulse {{
+        0% {{
+            box-shadow: 
+                0 0 10px rgba(0, 191, 255, 0.6),    
+                0 0 20px rgba(70, 130, 180, 0.4),   
+                0 0 30px rgba(0, 255, 255, 0.3),   
+                0 0 40px rgba(25, 25, 112, 0.2);
+        }}
+        50% {{
+            box-shadow: 
+                0 0 20px rgba(0, 191, 255, 0.8),    
+                0 0 40px rgba(70, 130, 180, 0.6),   
+                0 0 60px rgba(0, 255, 255, 0.5),   
+                0 0 80px rgba(25, 25, 112, 0.4);
+        }}
+        100% {{
+            box-shadow: 
+                0 0 10px rgba(0, 191, 255, 0.6),    
+                0 0 20px rgba(70, 130, 180, 0.4),   
+                0 0 30px rgba(0, 255, 255, 0.3),   
+                0 0 40px rgba(25, 25, 112, 0.2);
+        }}
+    }}
+
+    [data-testid="stBaseButton-secondary"] {{
+        background-color: lightblue;
+        border-color: #FFD700; 
+        color: #fff;
+        border-radius: 5px;
+        padding: 10px 20px;
+        cursor: pointer;
+        transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease, background-position 0.5s;
+        background-image: linear-gradient(135deg, lightskyblue, darkblue);
+        background-size: 200% 200%;
+    }}
+
+    [data-testid="stBaseButton-secondary"]:hover {{
+        background-position: 100% 0; 
+        transform: scale(1.1); 
+        box-shadow: 0 0 20px rgba(255, 215, 0, 0.5); 
+    }}
+    
+    [data-testid="stBaseButton-secondary"]:active {{
+        transform: scale(0.95);
+        background-color: #FF4500; 
+        box-shadow: 0 0 10px rgba(255, 69, 0, 0.8); 
+    }}
+
     </style>
     """
-    st.markdown(background, unsafe_allow_html=True)
-    
-    return background
-
-    
-    
+    st.markdown(background, unsafe_allow_html=True)                    
+            
 def img_decode(path):
     with open(path, "rb") as img_file:
         return "data:image/png;base64," + base64.b64encode(img_file.read()).decode()
@@ -68,12 +130,7 @@ def home():
     )
     
     with st.sidebar:
-        st.download_button(
-            label="📄 Download my resume",
-            data=pdf_bytes,
-            file_name="Ganesh_Resume.docx",
-            mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document",
-            )
+        ...
     
     #background UI
     background()
@@ -92,7 +149,7 @@ def home():
     }
 
     with st.container(border=False):
-        col1, col2 = st.columns(2)
+        col1, col2 = st.columns(2, vertical_alignment="center")
         
         with col1:
             
@@ -127,25 +184,40 @@ def home():
             """, 
             unsafe_allow_html=True)
         
-
-    st.write("##")
-
-    # About me section
-    st.subheader("About Me")
-    st.write("""
-    - 🧑‍💻 I am a **Computer Science Engineering Student** 
-
-    - ❤️ I am passionate about **Machine Learning/Deep Learning, MLOps, Data, Software Engineering, Computer Vision**, and more!
-    
-    - 📫 How to reach me: flameganesh7@gmail.com
-    
-    - 🏠 India
-    """)
-
-
     st.write("##")
     
-    st.write(f"""<div class="subtitle" style="text-align: center;">⬅️ Check out my Projects in the navigation menu! (Coming soon...)</div>""", unsafe_allow_html=True)
+    with st.container(border=False):
+        col1, col2 = st.columns(2)
+        
+        with col1:
+            st.write("")
+            st.markdown('<h2 class="textpad" style="color:white;">Any type of question & Discussion...</h2>', unsafe_allow_html=True)
+            st.markdown('<h4 class="textpad" style="color:white;">Let\'s Talk  <span style="color:darkorange;">______________________</span></h4>', unsafe_allow_html=True)
+            st.write("")
+            st.markdown('<h3 class="textpad" style="color:darkorange;">gtsganesh2005@outlook.com</h3>', unsafe_allow_html=True)
+            st.markdown('<h3 class="textpad" style="color:white;">Whatsapp: 7842329947</h3>', unsafe_allow_html=True)
+            st.write("")
+        
+        with col2:
+            st.write("")
+            st.markdown('<h2 style="color:white;">About Me</h2>', unsafe_allow_html=True)
+            st.markdown('<h8  style="color:lightcyan;">I am a passionate Computer Science and Engineering student with a keen interest in Artificial Intelligence and Machine Learning.</h8>', unsafe_allow_html=True)
+            st.write("")
+            st.markdown('<h9  style="color:lightcyan;">Name      :      G. Taraka Shiva Ganesh</h9>', unsafe_allow_html=True)
+            st.markdown('<h9  style="color:lightcyan;">Email     :      gtsganesh2005@outlook.com</h9>', unsafe_allow_html=True)
+            st.markdown('<h9  style="color:lightcyan;">website   :      ganesh-portfolio.streamlit.app</h9>', unsafe_allow_html=True)
+            st.write('')
+            st.download_button(
+            label="Download CV",
+            data=pdf_bytes,
+            file_name="Ganesh_Resume.docx",
+            mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+            key="CV"
+            )
+            st.write("")
+            
+    st.write("##")
+    
 
 if __name__ == "__main__":
     home()
