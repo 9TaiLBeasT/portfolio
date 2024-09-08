@@ -374,7 +374,7 @@ def home():
             st.write("")
             st.markdown('<h9  style="color:lightcyan;">Name      :      G. Taraka Shiva Ganesh</h9>', unsafe_allow_html=True)
             st.markdown('<h9  style="color:lightcyan;">Email     :      gtsganesh2005@outlook.com</h9>', unsafe_allow_html=True)
-            st.markdown('<h9  style="color:lightcyan;">website   :      Ganesh-Portfolio.streamlit.app</h9>', unsafe_allow_html=True)
+            st.markdown('<h9  style="color:lightcyan;">website   :      ganesh-portfolio.streamlit.app</h9>', unsafe_allow_html=True)
             st.write('')
             st.download_button(
             label="Download CV",
