@@ -29,7 +29,7 @@ def background():
     }}
     
     [data-testid="stHorizontalBlock"] {{
-         background-image: url("https://devsnap.nyc3.digitaloceanspaces.com/devsnap.me/codepen-VjrZWv.png");
+        background-image: url("https://devsnap.nyc3.digitaloceanspaces.com/devsnap.me/codepen-VjrZWv.png");
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
@@ -120,6 +120,38 @@ def background():
     background-color: #001f3f; 
     box-shadow: 0 4px 8px rgba(0, 31, 63, 0.5);
     }}
+    
+
+    [data-testid="stHeader"] {{
+        background-color: black;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        transition: transform 0.5s ease, background-position 0.5s ease, box-shadow 0.5s ease;
+        box-shadow:
+        0 0 10px rgba(0, 191, 255, 0.6),    
+        0 0 20px rgba(70, 130, 180, 0.4),   
+        0 0 30px rgba(0, 255, 255, 0.3),   
+        0 0 40px rgba(25, 25,112, 0.2);
+        animation: pulse 2s infinite;
+        background-size: 200% 200%;
+        color: white;
+        justify-content: flex-end;
+        position: sticky;
+        z-index: 100;
+        
+        
+    }}
+    </style>
+    <div data-testid="stHeader">
+        <a href="#about-me" class="small-text" style="padding-right: 400px;">About Me</a>
+        <a href="#skills" class="small-text" style="padding-right: 300px;">Skills</a>
+        <a href="#projects" class="small-text" style="padding-right: 180px;">Projects</a>
+        <a href="#Blog" class="small-text" style="padding-right: 80px;">Blog</a>
+    </div>
+
+
 
 
     </style>
@@ -159,7 +191,7 @@ def skills():
                     transition: width 0.5s;
                 }
                 .stTabs {
-                    padding: 25px;
+                    padding: 10px;
                 }
                 </style>
                 """, unsafe_allow_html=True
@@ -266,6 +298,7 @@ def home():
         st.write(f"<style>{f.read()}</style>", unsafe_allow_html=True)
 
     st.markdown("""<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">""", unsafe_allow_html=True)
+    
 
     social_icons_data = {
     "Kaggle": ["https://www.kaggle.com/auu23egcse045", "fa-brands fa-kaggle fa-bounce fa-xl", "#20beff"],

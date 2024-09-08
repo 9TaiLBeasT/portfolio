@@ -145,9 +145,40 @@ ul {
 }
 
 
-
+[data-testid="stToolbar"] {
+  display: none;
+}
 
  Hide Streamlit default elements 
-#MainMenu {visibility: visible;}
-header {visibility: hidden;}
-footer {visibility: hidden;} 
+#MainMenu {visibility: hidden;}
+header {visibility: visible;}
+footer {visibility: visible;} 
+
+
+
+.overlay-text {
+  position: absolute;
+  top: 50%; /* Adjust the vertical position */
+  left: 50%; /* Adjust the horizontal position */
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 24px;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.overlay-text:hover {
+  color: yellow;
+}
+
+
+
+.small-text {
+  font-size: 15px;
+  text-align: right;
+  position: fixed;  
+  top: 20px;  
+  right: 10px;
+  z-index: 10;  
+  text-decoration: none;
+  margin-left: 20px;}
