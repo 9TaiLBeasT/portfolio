@@ -149,7 +149,7 @@ def background():
         <a href="#skills" class="small-text" style="padding-right: 300px;">Skills</a>
         <a href="#projects" class="small-text" style="padding-right: 180px;">Projects</a>
         <a href="app-breast-cancer-prediction-57kxxffcgbweunup2azemk.streamlit.app" class="small-text" style="padding-right: 80px;">Blog</a>
-        <a href="#Ganesh" class="small-text" style="padding-right: 1320px; font-size: 20px;">⊙ Ganesh</a>
+        <p class="small-text" style="padding-right: 1320px; font-size: 20px;">⊙ Ganesh</p>
     </div>
 
     </style>
@@ -282,9 +282,13 @@ def social_media_icons(data):
 # Footer function
 def add_footer(data):
     footer = f"""
-    <div class="footer">
-        <p>&copy; 2024 Ganesh's Portfolio | Follow me on:</p>
-        {social_media_icons(data)}
+    <div class="footer" style="text-align: center; padding: 20px; background-color: #333; color: #fff;">
+        <p style="font-size: 24px; font-weight: bold;">&copy; 2024 Ganesh's Portfolio</p>
+        <p style="font-size: 18px;">Connect with me on:</p>
+        <div class="social-icons-container">
+            {social_media_icons(data)}
+        </div>
+        <p style="font-size: 14px; color: #ccc;">Built with ❤️ using Streamlit</p>
     </div>
     """
     st.markdown(footer, unsafe_allow_html=True)
