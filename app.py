@@ -148,15 +148,14 @@ def background():
         <a href="#about-me" class="small-text" style="padding-right: 400px;">About Me</a>
         <a href="#skills" class="small-text" style="padding-right: 300px;">Skills</a>
         <a href="#projects" class="small-text" style="padding-right: 180px;">Projects</a>
-        <a href="#Blog" class="small-text" style="padding-right: 80px;">Blog</a>
+        <a href="app-breast-cancer-prediction-57kxxffcgbweunup2azemk.streamlit.app" class="small-text" style="padding-right: 80px;">Blog</a>
+        <a href="#Ganesh" class="small-text" style="padding-right: 1320px; font-size: 20px;">⊙ Ganesh</a>
     </div>
-
-
-
 
     </style>
     """
-    st.markdown(background, unsafe_allow_html=True)                    
+    st.markdown(background, unsafe_allow_html=True)      
+                
 
 def skills():
     with st.container():
@@ -272,6 +271,23 @@ def social_media_icons(data):
         {''.join(social_icons_html)}
     </div>""", unsafe_allow_html=True)
     
+def social_media_icons(data):
+    social_icons_html = [
+        f"<a href='{data[platform][0]}' target='_blank' style='margin-right: 10px;'>"
+        f"<i class='{data[platform][1]}' style='color: {data[platform][2]};'></i>"
+        f"</a>" for platform in data
+    ]
+    return "".join(social_icons_html)
+
+# Footer function
+def add_footer(data):
+    footer = f"""
+    <div class="footer">
+        <p>&copy; 2024 Ganesh's Portfolio | Follow me on:</p>
+        {social_media_icons(data)}
+    </div>
+    """
+    st.markdown(footer, unsafe_allow_html=True)
 
 def home():
     
@@ -286,9 +302,6 @@ def home():
         layout="wide",
         initial_sidebar_state="expanded"
     )
-    
-    with st.sidebar:
-        ...
     
     #background UI
     background()
@@ -375,6 +388,12 @@ def home():
     st.write("##")
     
     projects()
+    
+    st.write("##")
+    
+    add_footer(social_icons_data)
+    
+
     
 if __name__ == "__main__":
     home()

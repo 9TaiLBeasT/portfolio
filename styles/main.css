@@ -152,7 +152,7 @@ ul {
  Hide Streamlit default elements 
 #MainMenu {visibility: hidden;}
 header {visibility: visible;}
-footer {visibility: visible;} 
+footer {visibility: hidden;} 
 
 
 
@@ -168,7 +168,7 @@ footer {visibility: visible;}
 }
 
 .overlay-text:hover {
-  color: yellow;
+  color: rgb(0, 255, 251);
 }
 
 
@@ -182,3 +182,34 @@ footer {visibility: visible;}
   z-index: 10;  
   text-decoration: none;
   margin-left: 20px;}
+
+
+
+
+
+  .footer {
+    background-color: #222;
+    color: #FFF;
+    padding: 20px 0;
+    text-align: center;
+    position: relative;
+    width: 100%;
+    bottom: 0;
+  }
+  
+  .footer p {
+    margin: 0;
+    font-size: 14px;
+  }
+  
+  .social-icon {
+    width: 25px;
+    height: 25px;
+    margin: 0 10px;
+    vertical-align: middle;
+  }
+  
+  .footer a:hover img {
+    opacity: 0.8;
+  }
+  
