@@ -145,11 +145,11 @@ def background():
     }}
     </style>
     <div data-testid="stHeader">
+        <p class="small-text" style="padding-right: 1320px; font-size: 20px;">⊙ Ganesh</p>
         <a href="#about-me" class="small-text" style="padding-right: 400px;">About Me</a>
         <a href="#skills" class="small-text" style="padding-right: 300px;">Skills</a>
         <a href="#projects" class="small-text" style="padding-right: 180px;">Projects</a>
         <a href="app-breast-cancer-prediction-57kxxffcgbweunup2azemk.streamlit.app" class="small-text" style="padding-right: 80px;">Blog</a>
-        <p class="small-text" style="padding-right: 1320px; font-size: 20px;">⊙ Ganesh</p>
     </div>
 
     </style>
