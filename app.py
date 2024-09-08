@@ -302,7 +302,7 @@ def home():
     # Page configs (tab title, favicon)
     st.set_page_config(
         page_title="Ganesh's Portfolio",
-        page_icon="☠️",
+        page_icon="©️",
         layout="wide",
         initial_sidebar_state="expanded"
     )
