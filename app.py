@@ -228,7 +228,6 @@ def projects():
 
         st.write("")
 
-
     
 def social_media_icons(data):
     social_icons_html = [
@@ -297,19 +296,12 @@ def home():
         with col2:
         # Profile image
             st.write(f"""
-            <div class="container">
-                <div class="box">
-                    <div class="spin-container">
-                        <div class="shape">
-                            <div class="bd">
-                                <img src="{img_decode(r"assets/gun.png")}" alt="Ganesh">
-                            </div>
+                        <div class="profile-container">
+                            <img src="data:image/png;base64,{img_decode(r"./assets/gun.png")}" class="profile-pic" alt="Profile Picture">
                         </div>
-                    </div>
-                </div>
-            </div>
-            """, 
-            unsafe_allow_html=True)
+                    """, unsafe_allow_html=True)
+            
+
         
     st.write("##")
     
